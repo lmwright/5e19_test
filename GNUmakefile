@@ -1,9 +1,9 @@
 
 # compiler for OS X
-#CXX=clang++
+CXX=clang++
 
 # compiler for Ubuntu
-CXX=g++
+#CXX=g++
 
 CXX_FLAGS = -g `root-config --cflags`
 
