@@ -15,15 +15,15 @@ int main()
   float z_max = 1036;
 
   TFile* example_file = new TFile("ana_hist_example.root");
+  TTree* anatree = (TTree*)example_file->Get("analysistree/anatree");
+  //std::cout << " anatree: " << anatree << std::endl; // use to check if tree loaded ok. if ok, get a non-zero address for the pointer
 
-  example_file->cd("analysistree");
-  TTree* anatree = (TTree*)example_file->Get("anatree");
   float x_pos[100];
   float y_pos[100];
   float z_pos[100];
-  anatree->SetBranchAddress("nuvtxx_truth", &x_pos);
-  anatree->SetBranchAddress("nuvtxy_truth", &y_pos);
-  anatree->SetBranchAddress("nuvtxz_truth", &z_pos);
+  anatree->SetBranchAddress("nuvtxx_truth", x_pos);
+  anatree->SetBranchAddress("nuvtxy_truth", y_pos);
+  anatree->SetBranchAddress("nuvtxz_truth", z_pos);
 
   int nentries = anatree->GetEntries();
   int count = 0;
